@@ -55,6 +55,7 @@ class Menu:
                     if event.key == pygame.K_RETURN:  # ENTER
                         return MENU_OPTION[menu_option]
 
+
     def menu_text(self, text_size: int, text: str, text_color: tuple, text_center_pos: tuple, font_name="Harlow Solid"):
         text_font: Font = pygame.font.SysFont(name=font_name, size=text_size)
         text_surf: Surface = text_font.render(text, True, text_color).convert_alpha()
