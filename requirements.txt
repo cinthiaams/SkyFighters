@@ -1,0 +1,5 @@
+cx_Freeze==7.2.10
+filelock==3.18.0
+numpy==2.2.4
+packaging==24.2
+pygame==2.6.1

@@ -31,8 +31,6 @@ class EntityMediator:
             valid_interaction = True
         elif isinstance(ent1, EnemyShot) and isinstance(ent2, Player):
             valid_interaction = True
-        # elif isinstance(ent1, Player) and isinstance(ent2, Enemy):
-            # valid_interaction = True
 
         if valid_interaction:  # if valid_interaction == True
             if (ent1.rect.right >= ent2.rect.left and
@@ -54,7 +52,6 @@ class EntityMediator:
             for ent in entity_list:
                 if ent.name == 'Player2':
                     ent.score += enemy.score
-
 
     @staticmethod
     def verify_collision(entity_list: list[Entity]):
