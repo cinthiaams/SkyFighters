@@ -1,5 +1,3 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
 import pygame.image
 from pygame import Surface, Rect
 from pygame.font import Font
@@ -13,9 +11,10 @@ class Menu:
         self.surf = pygame.image.load('asset/MenuBG.png').convert_alpha()
         self.rect = self.surf.get_rect(left=0, top=0)
 
-    def run(self, ):
+    def run(self):
         menu_option = 0
         pygame.mixer_music.load('asset/Menu.wav')
+        pygame.mixer_music.set_volume(0.3)
         pygame.mixer_music.play(-1)
         while True:
             # DRAW IMAGES
@@ -54,7 +53,6 @@ class Menu:
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_RETURN:  # ENTER
                         return MENU_OPTION[menu_option]
-
 
     def menu_text(self, text_size: int, text: str, text_color: tuple, text_center_pos: tuple, font_name="Harlow Solid"):
         text_font: Font = pygame.font.SysFont(name=font_name, size=text_size)

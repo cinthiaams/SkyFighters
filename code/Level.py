@@ -9,6 +9,7 @@ from code.Enemy import Enemy
 from code.Entity import Entity
 from code.EntityFactory import EntityFactory
 from code.EntityMediator import EntityMediator
+from code.GameOver import GameOver
 from code.Player import Player
 from code.const import C_WHITE, WIN_HEIGHT, MENU_OPTION, EVENT_ENEMY, SPAWN_TIME, C_PURPLE, C_PINK, EVENT_TIMEOUT, \
     TIMEOUT_STEP, TIMEOUT_LEVEL
@@ -21,6 +22,7 @@ class Level:
         self.timeout = TIMEOUT_LEVEL
         self.name = name
         self.game_mode = game_mode
+        self.player_score = player_score
         self.entity_list: list[Entity] = []
         self.entity_list.extend(EntityFactory.get_entity(self.name + 'Bg'))
         player = EntityFactory.get_entity('Player1')
@@ -35,6 +37,7 @@ class Level:
 
     def run(self, player_score: list[int]):
         pygame.mixer_music.load(f'asset/{self.name}.wav')
+        pygame.mixer_music.set_volume(0.3)
         pygame.mixer_music.play(-1)
         clock = pygame.time.Clock()
         while True:
@@ -62,21 +65,29 @@ class Level:
                     if self.timeout == 0:
                         for ent in self.entity_list:
                             if isinstance(ent, Player) and ent.name == 'Player1':
-                                player_score[0] = ent.score
+                                self.player_score[0] = ent.score
                             if isinstance(ent, Player) and ent.name == 'Player2':
-                                player_score[1] = ent.score
+                                self.player_score[1] = ent.score
                         return True
 
-                found_player = False
-                for ent in self.entity_list:
-                    if isinstance(ent, Player):
-                        found_player = True
-                if not found_player:
-                    return False
+            # Salvar score antes de remover jogadores
+            for ent in self.entity_list:
+                if isinstance(ent, Player) and ent.name == 'Player1':
+                    self.player_score[0] = ent.score
+                if isinstance(ent, Player) and ent.name == 'Player2':
+                    self.player_score[1] = ent.score
+
+            if not any(isinstance(ent, Player) for ent in self.entity_list):
+                game_over_bg = EntityFactory.get_entity(f'GameOver{self.name}Bg')
+                if game_over_bg:
+                    self.entity_list.extend(game_over_bg)
+                game_over_screen = GameOver(self.window, self.name, self.game_mode, self.player_score)
+                game_over_screen.run()
+                return False
 
             # printed text
-            self.level_text(14, f'{self.name} - Timeout: {self.timeout / 1000 :.1f}s', C_WHITE, (10, 5))
-            self.level_text(14, f'fps: {clock.get_fps() :.0f}', C_WHITE, (10, WIN_HEIGHT - 35))
+            self.level_text(14, f'{self.name} - Timeout: {self.timeout / 1000:.1f}s', C_WHITE, (10, 5))
+            self.level_text(14, f'fps: {clock.get_fps():.0f}', C_WHITE, (10, WIN_HEIGHT - 35))
             self.level_text(14, f'entities: {len(self.entity_list)}', C_WHITE, (10, WIN_HEIGHT - 20))
             pygame.display.flip()
             # Collisions
