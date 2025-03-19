@@ -3,7 +3,7 @@ import pygame
 from pygame import Surface, Rect
 from pygame.font import Font
 
-from code.const import WIN_WIDTH, WIN_HEIGHT, C_WHITE, SCORE_POS, MENU_OPTION
+from code.const import WIN_WIDTH, C_WHITE, MENU_OPTION, GAME_OVER_POS
 from code.EntityFactory import EntityFactory
 
 
@@ -22,13 +22,13 @@ class GameOver:
 
         while True:
             self.window.blit(source=self.background.surf, dest=self.background.rect)
-            self.display_text(48, "Game Over", C_WHITE, (WIN_WIDTH / 2, 50))
+            self.display_text(48, "Game Over", C_WHITE, GAME_OVER_POS['Title'])
 
             if self.game_mode == MENU_OPTION[0]:
-                self.display_text(30, f"Score: {self.player_score[0]}", C_WHITE, (WIN_WIDTH / 2, 100))
+                self.display_text(30, f"Score: {self.player_score[0]}", C_WHITE, GAME_OVER_POS['ScorePlayer1'])
             else:
-                self.display_text(30, f"Player 1 Score: {self.player_score[0]}", C_WHITE, (WIN_WIDTH / 2, 90))
-                self.display_text(30, f"Player 2 Score: {self.player_score[1]}", C_WHITE, (WIN_WIDTH / 2, 120))
+                self.display_text(30, f"Player 1 Score: {self.player_score[0]}", C_WHITE, GAME_OVER_POS['ScorePlayer1'])
+                self.display_text(30, f"Player 2 Score: {self.player_score[1]}", C_WHITE, GAME_OVER_POS['ScorePlayer2'])
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:

@@ -77,6 +77,7 @@ class Level:
                 if isinstance(ent, Player) and ent.name == 'Player2':
                     self.player_score[1] = ent.score
 
+
             if not any(isinstance(ent, Player) for ent in self.entity_list):
                 game_over_bg = EntityFactory.get_entity(f'GameOver{self.name}Bg')
                 if game_over_bg:

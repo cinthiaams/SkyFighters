@@ -48,13 +48,13 @@ ENTITY_HEALTH = {
     'Level2Bg5': 999,
     'GameOverLevel1Bg': 999,
     'GameOverLevel2Bg': 999,
-    'Player1': 25,
+    'Player1': 500,
     'Player1Shot': 1,
-    'Player2': 25,
+    'Player2': 500,
     'Player2Shot': 1,
-    'Enemy1': 60,
+    'Enemy1': 100,
     'Enemy1Shot': 1,
-    'Enemy2': 60,
+    'Enemy2': 100,
     'Enemy2Shot': 1
 }
 
@@ -140,6 +140,14 @@ TIMEOUT_STEP = 100
 # W
 WIN_WIDTH = 576
 WIN_HEIGHT = 324
+
+# G (depends on the W)
+
+GAME_OVER_POS = {
+    'Title': (WIN_WIDTH / 2, 50),
+    'ScorePlayer1': (WIN_WIDTH / 2, 100),
+    'ScorePlayer2': (WIN_WIDTH / 2, 130)
+}
 
 # S (depends on the W)
 SCORE_POS = {'Title': (WIN_WIDTH / 2, 50),
