@@ -11,6 +11,7 @@ from code.EntityFactory import EntityFactory
 from code.EntityMediator import EntityMediator
 from code.GameOver import GameOver
 from code.Player import Player
+from code.Score import Score
 from code.const import C_WHITE, WIN_HEIGHT, MENU_OPTION, EVENT_ENEMY, SPAWN_TIME, C_PURPLE, C_PINK, EVENT_TIMEOUT, \
     TIMEOUT_STEP, TIMEOUT_LEVEL
 
@@ -63,20 +64,18 @@ class Level:
                 if event.type == EVENT_TIMEOUT:
                     self.timeout -= TIMEOUT_STEP
                     if self.timeout == 0:
-                        for ent in self.entity_list:
-                            if isinstance(ent, Player) and ent.name == 'Player1':
-                                self.player_score[0] = ent.score
-                            if isinstance(ent, Player) and ent.name == 'Player2':
-                                self.player_score[1] = ent.score
-                        return True
+                        self.update_player_scores()
+                        if self.name == 'Level5':
+                            score_screen = Score(self.window)
+                            score_screen.save(self.game_mode, self.player_score)
+                            return False
+                        else:
+                            next_level_name = f'Level{int(self.name[-1]) + 1}'
+                            next_level = Level(self.window, next_level_name, self.game_mode, self.player_score)
+                            next_level.run(self.player_score)
+                            return False
 
-            # Salvar score antes de remover jogadores
-            for ent in self.entity_list:
-                if isinstance(ent, Player) and ent.name == 'Player1':
-                    self.player_score[0] = ent.score
-                if isinstance(ent, Player) and ent.name == 'Player2':
-                    self.player_score[1] = ent.score
-
+            self.update_player_scores()
 
             if not any(isinstance(ent, Player) for ent in self.entity_list):
                 game_over_bg = EntityFactory.get_entity(f'GameOver{self.name}Bg')
@@ -94,6 +93,13 @@ class Level:
             # Collisions
             EntityMediator.verify_collision(entity_list=self.entity_list)
             EntityMediator.verify_health(entity_list=self.entity_list)
+
+    def update_player_scores(self):
+        for ent in self.entity_list:
+            if isinstance(ent, Player) and ent.name == 'Player1':
+                self.player_score[0] = ent.score
+            if isinstance(ent, Player) and ent.name == 'Player2':
+                self.player_score[1] = ent.score
 
     def level_text(self, text_size: int, text: str, text_color: tuple, text_pos: tuple):
         text_font: Font = pygame.font.SysFont(name="Lucida Sans Typewriter", size=text_size)

@@ -1,5 +1,4 @@
 import pygame
-from pygame.examples.grid import WINDOW_WIDTH
 
 # C
 C_ORANGE = (255, 132, 0)
@@ -23,8 +22,25 @@ ENTITY_DAMAGE = {
     'Level2Bg3': 0,
     'Level2Bg4': 0,
     'Level2Bg5': 0,
+    'Level3Bg0': 0,
+    'Level3Bg1': 0,
+    'Level3Bg2': 0,
+    'Level3Bg3': 0,
+    'Level4Bg0': 0,
+    'Level4Bg1': 0,
+    'Level4Bg2': 0,
+    'Level4Bg3': 0,
+    'Level4Bg4': 0,
+    'Level5Bg0': 0,
+    'Level5Bg1': 0,
+    'Level5Bg2': 0,
+    'Level5Bg3': 0,
+    'Level5Bg4': 0,
     'GameOverLevel1Bg': 0,
     'GameOverLevel2Bg': 0,
+    'GameOverLevel3Bg': 0,
+    'GameOverLevel4Bg': 0,
+    'GameOverLevel5Bg': 0,
     'Player1': 1,
     'Player1Shot': 25,
     'Player2': 1,
@@ -46,15 +62,32 @@ ENTITY_HEALTH = {
     'Level2Bg3': 999,
     'Level2Bg4': 999,
     'Level2Bg5': 999,
+    'Level3Bg0': 999,
+    'Level3Bg1': 999,
+    'Level3Bg2': 999,
+    'Level3Bg3': 999,
+    'Level4Bg0': 999,
+    'Level4Bg1': 999,
+    'Level4Bg2': 999,
+    'Level4Bg3': 999,
+    'Level4Bg4': 999,
+    'Level5Bg0': 999,
+    'Level5Bg1': 999,
+    'Level5Bg2': 999,
+    'Level5Bg3': 999,
+    'Level5Bg4': 999,
     'GameOverLevel1Bg': 999,
     'GameOverLevel2Bg': 999,
-    'Player1': 500,
+    'GameOverLevel3Bg': 999,
+    'GameOverLevel4Bg': 999,
+    'GameOverLevel5Bg': 999,
+    'Player1': 300,
     'Player1Shot': 1,
-    'Player2': 500,
+    'Player2': 300,
     'Player2Shot': 1,
     'Enemy1': 100,
     'Enemy1Shot': 1,
-    'Enemy2': 100,
+    'Enemy2': 125,
     'Enemy2Shot': 1
 }
 
@@ -69,8 +102,25 @@ ENTITY_SCORE = {
     'Level2Bg3': 0,
     'Level2Bg4': 0,
     'Level2Bg5': 0,
+    'Level3Bg0': 0,
+    'Level3Bg1': 0,
+    'Level3Bg2': 0,
+    'Level3Bg3': 0,
+    'Level4Bg0': 0,
+    'Level4Bg1': 0,
+    'Level4Bg2': 0,
+    'Level4Bg3': 0,
+    'Level4Bg4': 0,
+    'Level5Bg0': 0,
+    'Level5Bg1': 0,
+    'Level5Bg2': 0,
+    'Level5Bg3': 0,
+    'Level5Bg4': 0,
     'GameOverLevel1Bg': 0,
     'GameOverLevel2Bg': 0,
+    'GameOverLevel3Bg': 0,
+    'GameOverLevel4Bg': 0,
+    'GameOverLevel5Bg': 0,
     'Player1': 0,
     'Player1Shot': 0,
     'Player2': 0,
@@ -99,16 +149,33 @@ ENTITY_SPEED = {
     'Level2Bg3': 3,
     'Level2Bg4': 4,
     'Level2Bg5': 5,
+    'Level3Bg0': 0,
+    'Level3Bg1': 1,
+    'Level3Bg2': 2,
+    'Level3Bg3': 3,
+    'Level4Bg0': 0,
+    'Level4Bg1': 1,
+    'Level4Bg2': 2,
+    'Level4Bg3': 3,
+    'Level4Bg4': 4,
+    'Level5Bg0': 0,
+    'Level5Bg1': 1,
+    'Level5Bg2': 2,
+    'Level5Bg3': 3,
+    'Level5Bg4': 4,
     'GameOverLevel1Bg': 0,
     'GameOverLevel2Bg': 0,
-    'Player1': 3,
-    'Player1Shot': 5,
-    'Player2': 3,
-    'Player2Shot': 5,
-    'Enemy1': 1,
-    'Enemy1Shot': 3,
-    'Enemy2': 1,
-    'Enemy2Shot': 5
+    'GameOverLevel3Bg': 0,
+    'GameOverLevel4Bg': 0,
+    'GameOverLevel5Bg': 0,
+    'Player1': 4,
+    'Player1Shot': 6,
+    'Player2': 4,
+    'Player2Shot': 6,
+    'Enemy1': 2,
+    'Enemy1Shot': 4,
+    'Enemy2': 2,
+    'Enemy2Shot': 6
 }
 
 # M
@@ -131,10 +198,10 @@ PLAYER_KEY_SHOOT = {'Player1': pygame.K_SPACE,
                     'Player2': pygame.K_f}
 
 # S
-SPAWN_TIME = 4000
+SPAWN_TIME = 3000
 
 # T
-TIMEOUT_LEVEL = 30000
+TIMEOUT_LEVEL = 20000
 TIMEOUT_STEP = 100
 
 # W

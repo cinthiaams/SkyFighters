@@ -23,10 +23,34 @@ class EntityFactory:
                     list_bg.append(Background(f'Level2Bg{i}', (0, 0)))
                     list_bg.append(Background(f'Level2Bg{i}', (WIN_WIDTH, 0)))
                 return list_bg
+            case'Level3Bg':
+                list_bg = []
+                for i in range(4):
+                    list_bg.append(Background(f'Level3Bg{i}', (0, 0)))
+                    list_bg.append(Background(f'Level3Bg{i}', (WIN_WIDTH, 0)))
+                return list_bg
+            case 'Level4Bg':
+                list_bg = []
+                for i in range(5):
+                    list_bg.append(Background(f'Level4Bg{i}', (0, 0)))
+                    list_bg.append(Background(f'Level4Bg{i}', (WIN_WIDTH, 0)))
+                return list_bg
+            case 'Level5Bg':
+                list_bg = []
+                for i in range(5):
+                    list_bg.append(Background(f'Level5Bg{i}', (0, 0)))
+                    list_bg.append(Background(f'Level5Bg{i}', (WIN_WIDTH, 0)))
+                return list_bg
             case 'GameOverLevel1Bg':
                 return [Background('GameOverLevel1Bg', (0, 0))]
             case 'GameOverLevel2Bg':
                 return [Background('GameOverLevel2Bg', (0, 0))]
+            case 'GameOverLevel3Bg':
+                return [Background('GameOverLevel3Bg', (0, 0))]
+            case 'GameOverLevel4Bg':
+                return [Background('GameOverLevel4Bg', (0, 0))]
+            case 'GameOverLevel5Bg':
+                return [Background('GameOverLevel5Bg', (0, 0))]
             case 'Player1':
                 return Player('Player1', (10, WIN_HEIGHT / 2 - 30))
             case 'Player2':
