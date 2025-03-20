@@ -3,7 +3,7 @@ import pygame
 from pygame import Surface, Rect
 from pygame.font import Font
 
-from code.const import WIN_WIDTH, C_WHITE, MENU_OPTION, GAME_OVER_POS
+from code.const import C_WHITE, MENU_OPTION, GAME_OVER_POS
 from code.EntityFactory import EntityFactory
 
 
@@ -36,7 +36,7 @@ class GameOver:
                     sys.exit()
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_RETURN or event.key == pygame.K_ESCAPE:
-                        return  # Sai da tela de Game Over
+                        return
 
             pygame.display.flip()
 

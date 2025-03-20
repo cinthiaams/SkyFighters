@@ -23,7 +23,7 @@ class Score:
         name = ''
         while True:
             self.window.blit(source=self.surf, dest=self.rect)
-            self.score_text(48, 'You Win!!', C_WHITE, SCORE_POS['Title'])
+            self.score_text(40, 'Mission Accomplished!!', C_WHITE, SCORE_POS['Title'])
             text = 'Enter your name (4 characters):'
             score = player_score[0]
             if game_mode == MENU_OPTION[0]:
